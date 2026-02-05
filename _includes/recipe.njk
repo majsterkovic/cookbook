@@ -5,7 +5,7 @@ layout: base.njk
   <header class="recipe-header">
     <div class="container">
       {% if image %}
-      <div class="recipe-hero" style="background-image: url('{{ image }}')">
+      <div class="recipe-hero" style="background-image: url('{{ image | url }}')">
         <div class="recipe-hero-overlay"></div>
       </div>
       {% endif %}
@@ -68,6 +68,6 @@ layout: base.njk
   </div>
   
   <div class="container">
-    <a href="/" class="back-link">← {{ site.ui.allRecipes }}</a>
+    <a href="{{ '/' | url }}" class="back-link">← {{ site.ui.allRecipes }}</a>
   </div>
 </article>

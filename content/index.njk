@@ -21,8 +21,8 @@ permalink: /
     
     <div class="recipes-grid" id="recipes-grid">
       {% for recipe in collections.recipes %}
-      <a href="/recipes/{{ recipe.data.slug }}/" class="recipe-card">
-        <div class="card-image" {% if recipe.data.image %}style="background-image: url('{{ recipe.data.image }}')"{% endif %}>
+      <a href="{{ ('/recipes/' + recipe.data.slug + '/') | url }}" class="recipe-card">
+        <div class="card-image" {% if recipe.data.image %}style="background-image: url('{{ recipe.data.image | url }}')"{% endif %}>
           {% if not recipe.data.image %}
           <div class="card-image-placeholder">🍽️</div>
           {% endif %}

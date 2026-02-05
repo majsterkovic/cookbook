@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% if pageTitle %}{{ pageTitle }} | {% endif %}{{ site.title }}</title>
   <meta name="description" content="{{ description | default(site.description) }}">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -13,14 +13,14 @@
 <body>
   <nav class="navbar">
     <div class="container">
-      <a href="/" class="logo">
+      <a href="{{ '/' | url }}" class="logo">
         <span class="logo-icon">🍳</span>
         <span class="logo-text">{{ site.title }}</span>
       </a>
       
       <div class="nav-links">
-        <a href="/">{{ site.nav.home }}</a>
-        <a href="/#recipes">{{ site.nav.recipes }}</a>
+        <a href="{{ '/' | url }}">{{ site.nav.home }}</a>
+        <a href="{{ '/#recipes' | url }}">{{ site.nav.recipes }}</a>
       </div>
     </div>
   </nav>
