@@ -1,0 +1,20 @@
+{
+    "title": "Moje Przepisy",
+    "description": "Kolekcja moich ulubionych przepisów kulinarnych",
+    "author": "majsterkovic",
+    "lang": "pl",
+    "nav": {
+        "home": "Strona główna",
+        "recipes": "Przepisy"
+    },
+    "ui": {
+        "servings": "Porcje",
+        "prepTime": "Czas przygotowania",
+        "cookTime": "Czas gotowania",
+        "difficulty": "Trudność",
+        "ingredients": "Składniki",
+        "instructions": "Przygotowanie",
+        "allRecipes": "Wszystkie przepisy",
+        "searchPlaceholder": "Szukaj przepisu..."
+    }
+}

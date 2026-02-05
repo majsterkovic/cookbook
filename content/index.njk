@@ -1,0 +1,64 @@
+---
+layout: base.njk
+pageTitle: null
+permalink: /
+---
+<section class="hero">
+  <div class="container">
+    <h1>{{ site.title }}</h1>
+    <p class="hero-subtitle">{{ site.description }}</p>
+  </div>
+</section>
+
+<section id="recipes" class="recipes-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>{{ site.nav.recipes }}</h2>
+      <div class="search-box">
+        <input type="text" id="recipe-search" placeholder="{{ site.ui.searchPlaceholder }}" aria-label="Szukaj przepisów">
+      </div>
+    </div>
+    
+    <div class="recipes-grid" id="recipes-grid">
+      {% for recipe in collections.recipes %}
+      <a href="/recipes/{{ recipe.data.slug }}/" class="recipe-card">
+        <div class="card-image" {% if recipe.data.image %}style="background-image: url('{{ recipe.data.image }}')"{% endif %}>
+          {% if not recipe.data.image %}
+          <div class="card-image-placeholder">🍽️</div>
+          {% endif %}
+          <div class="card-difficulty difficulty-{{ recipe.data.difficulty }}">
+            {{ recipe.data.difficulty }}
+          </div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">{{ recipe.data.title }}</h3>
+          <div class="card-meta">
+            <span>⏱️ {{ (recipe.data.prep_time + recipe.data.cook_time) | formatTime }}</span>
+            <span>👥 {{ recipe.data.servings }}</span>
+          </div>
+          {% if recipe.data.categories %}
+          <div class="card-tags">
+            {% for category in recipe.data.categories | slice(0, 2) %}
+            <span class="tag">{{ category }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+      </a>
+      {% else %}
+      <p class="no-recipes">Brak przepisów. Dodaj swój pierwszy przepis!</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+document.getElementById('recipe-search').addEventListener('input', function(e) {
+  const query = e.target.value.toLowerCase();
+  const cards = document.querySelectorAll('.recipe-card');
+  cards.forEach(card => {
+    const title = card.querySelector('.card-title').textContent.toLowerCase();
+    card.style.display = title.includes(query) ? '' : 'none';
+  });
+});
+</script>

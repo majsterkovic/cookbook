@@ -1,0 +1,73 @@
+---
+layout: base.njk
+---
+<article class="recipe-page">
+  <header class="recipe-header">
+    <div class="container">
+      {% if image %}
+      <div class="recipe-hero" style="background-image: url('{{ image }}')">
+        <div class="recipe-hero-overlay"></div>
+      </div>
+      {% endif %}
+      
+      <div class="recipe-title-section">
+        <h1>{{ title }}</h1>
+        
+        <div class="recipe-meta">
+          <div class="meta-item">
+            <span class="meta-icon">👥</span>
+            <span class="meta-label">{{ site.ui.servings }}</span>
+            <span class="meta-value">{{ servings }}</span>
+          </div>
+          
+          <div class="meta-item">
+            <span class="meta-icon">⏱️</span>
+            <span class="meta-label">{{ site.ui.prepTime }}</span>
+            <span class="meta-value">{{ prep_time | formatTime }}</span>
+          </div>
+          
+          <div class="meta-item">
+            <span class="meta-icon">🍳</span>
+            <span class="meta-label">{{ site.ui.cookTime }}</span>
+            <span class="meta-value">{{ cook_time | formatTime }}</span>
+          </div>
+          
+          <div class="meta-item">
+            <span class="meta-icon">📊</span>
+            <span class="meta-label">{{ site.ui.difficulty }}</span>
+            <span class="meta-value difficulty-{{ difficulty }}">{{ difficulty }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <div class="recipe-content container">
+    <div class="recipe-grid">
+      <aside class="ingredients-section">
+        <h2>{{ site.ui.ingredients }}</h2>
+        <ul class="ingredients-list">
+          {% for ingredient in ingredients %}
+          <li>
+            <label class="ingredient-item">
+              <input type="checkbox" class="ingredient-check">
+              <span>{{ ingredient }}</span>
+            </label>
+          </li>
+          {% endfor %}
+        </ul>
+      </aside>
+      
+      <section class="instructions-section">
+        <h2>{{ site.ui.instructions }}</h2>
+        <div class="instructions-content">
+          {{ content | safe }}
+        </div>
+      </section>
+    </div>
+  </div>
+  
+  <div class="container">
+    <a href="/" class="back-link">← {{ site.ui.allRecipes }}</a>
+  </div>
+</article>

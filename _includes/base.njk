@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if pageTitle %}{{ pageTitle }} | {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ description | default(site.description) }}">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="/" class="logo">
+        <span class="logo-icon">🍳</span>
+        <span class="logo-text">{{ site.title }}</span>
+      </a>
+      
+      <div class="nav-links">
+        <a href="/">{{ site.nav.home }}</a>
+        <a href="/#recipes">{{ site.nav.recipes }}</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 {{ site.author }}. Wszystkie prawa zastrzeżone.</p>
+    </div>
+  </footer>
+</body>
+</html>

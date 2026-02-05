@@ -1,0 +1,24 @@
+<a href="{{ url }}" class="recipe-card">
+  <div class="card-image" {% if image %}style="background-image: url('{{ image }}')"{% endif %}>
+    {% if not image %}
+    <div class="card-image-placeholder">🍽️</div>
+    {% endif %}
+    <div class="card-difficulty difficulty-{{ difficulty }}">
+      {{ difficulty }}
+    </div>
+  </div>
+  <div class="card-content">
+    <h3 class="card-title">{{ title }}</h3>
+    <div class="card-meta">
+      <span>⏱️ {{ (prep_time + cook_time) | formatTime }}</span>
+      <span>👥 {{ servings }}</span>
+    </div>
+    {% if categories %}
+    <div class="card-tags">
+      {% for category in categories | slice(0, 2) %}
+      <span class="tag">{{ category }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</a>
